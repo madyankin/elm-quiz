@@ -1,0 +1,16 @@
+{
+  "name": "course-project-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Madyankin <alexander@madyankin.name>",
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "cssnano-cli": "^1.0.4",
+    "electron-prebuilt": "^0.36.8",
+    "elm-css": "github:rtfeldman/elm-css"
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "1.0.0",
+    "summary": "helpful summary of your project, less than 80 characters",
+    "repository": "https://github.com/user/project.git",
+    "license": "BSD3",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [],
+    "native-modules": true,
+    "dependencies": {
+        "elm-community/elm-random-extra": "1.0.1 <= v < 2.0.0",
+        "elm-community/json-extra": "1.0.0 <= v < 2.0.0",
+        "elm-lang/core": "4.0.0 <= v < 5.0.0",
+        "elm-lang/html": "1.0.0 <= v < 2.0.0",
+        "elm-lang/keyboard": "1.0.0 <= v < 2.0.0",
+        "elm-lang/navigation": "1.0.0 <= v < 2.0.0",
+        "etaque/elm-route-parser": "2.2.1 <= v < 3.0.0",
+        "evancz/url-parser": "1.0.0 <= v < 2.0.0",
+        "mgold/elm-date-format": "1.1.4 <= v < 2.0.0",
+        "rtfeldman/elm-css": "3.0.0 <= v < 4.0.0",
+        "rtfeldman/elm-css-util": "1.0.1 <= v < 2.0.0"
+    },
+    "elm-version": "0.17.0 <= v < 0.18.0"
+}
