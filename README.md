@@ -3,7 +3,7 @@
 Install dependencies:
 
 ```
-npm i -g elm elm-css electron-prebuilt
+make install-packages
 ```
 
 Build:

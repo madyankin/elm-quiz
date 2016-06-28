@@ -20,19 +20,19 @@ $(APP):
 	elm make $(MAIN) --output $@
 
 styles:
-	elm-css $(STYLES_MAIN)
+	$$(npm bin)/elm-css $(STYLES_MAIN)
 	cat $(CSS_GLOBAL) $(CSS) > $(CSS).tmp
-	cssnano $(CSS).tmp > $(CSS_MIN)
+	$$(npm bin)/cssnano $(CSS).tmp > $(CSS_MIN)
 	rm $(CSS).tmp
 
 clean:
 	rm -rf $(BUILD) $(ARTIFACTS)
 
 watch:
-	chokidar $(SOURCES) -c 'make build'
+	$$(npm bin)/chokidar $(SOURCES) -c 'make build'
 
 start: build
-	electron main.js & make watch
+	$$(npm bin)/electron main.js & make watch
 
 install-packages:
 	npm install
