@@ -4,6 +4,7 @@ import App.Routing exposing (Route(..), routeFromResult)
 import Features.Quiz.Model as Quiz
 import Features.Result.Model as Result
 import Features.ResultsList.Model as ResultsList
+import Features.Help.Model as Help
 
 
 type alias Model =
@@ -11,6 +12,7 @@ type alias Model =
     , quiz : Quiz.Model
     , result : Result.Model
     , resultsList : ResultsList.Model
+    , help: Help.Model
     }
 
 
@@ -22,6 +24,7 @@ init result =
             , quiz = Quiz.init
             , result = Result.init
             , resultsList = ResultsList.init
+            , help = Help.init
             }
     in
         ( model, Cmd.none )
