@@ -1,17 +1,22 @@
 module Features.Help.Model exposing (..)
 
+import Html exposing (Html)
 import List exposing (member)
 import Features.Help.Hints exposing (..)
 
 
+type alias Help message =
+    HelpHint -> Maybe HelpHint -> Html message
+
+
 type HelpHint
-    = HomeMenu
-    | QuizMenu
-    | QuizStatus
-    | QuizCard
-    | ResultMessage
-    | ResultMenu
-    | ResultTable
+    = HomeMenuHint
+    | QuizMenuHint
+    | QuizStatusHint
+    | QuizCardHint
+    | ResultMessageHint
+    | ResultMenuHint
+    | ResultTableHint
 
 
 type alias Model =
@@ -21,10 +26,10 @@ type alias Model =
     }
 
 
-init : Model
-init =
+init : Maybe HelpHint -> Model
+init hint =
     { show = False
-    , currentHint = Nothing
+    , currentHint = hint
     , shownHints = []
     }
 
@@ -45,20 +50,23 @@ hideHint model =
     { model | currentHint = Nothing }
 
 
-disableHints : Model
-disableHints =
-    { init | show = False }
+disableHints : Model -> Model
+disableHints model =
+    { model | show = False }
 
 
-enableHints : Model
-enableHints =
-    { init | show = True }
+enableHints : Model -> Model
+enableHints model =
+    { model | show = True }
 
 
 hint : HelpHint -> String
 hint helpHint =
     case helpHint of
-        QuizMenu ->
+        HomeMenuHint ->
+            homeMenu
+
+        QuizMenuHint ->
             quizMenu
 
         _ ->

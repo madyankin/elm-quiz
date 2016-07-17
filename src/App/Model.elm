@@ -1,10 +1,10 @@
 module App.Model exposing (..)
 
-import App.Routing exposing (Route(..), routeFromResult)
+import App.Routing exposing (Route(..), routeFromResult, navigateTo)
 import Features.Quiz.Model as Quiz
 import Features.Result.Model as Result
 import Features.ResultsList.Model as ResultsList
-import Features.Help.Model as Help
+import Features.Help.Model as Help exposing (HelpHint(..))
 
 
 type alias Model =
@@ -24,7 +24,7 @@ init result =
             , quiz = Quiz.init
             , result = Result.init
             , resultsList = ResultsList.init
-            , help = Help.init
+            , help = Help.init (Just HomeMenuHint)
             }
     in
         ( model, Cmd.none )

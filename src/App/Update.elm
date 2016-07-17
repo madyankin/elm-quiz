@@ -7,6 +7,7 @@ import App.Update.Home exposing (..)
 import App.Update.Quiz exposing (..)
 import App.Update.ResultsList exposing (..)
 import App.Update.Result exposing (..)
+import App.Update.Help exposing (..)
 
 
 update : Message -> Model -> ( Model, Cmd Message )
@@ -30,6 +31,9 @@ update message model =
 
             ResultMessage resultMessage ->
                 updateResult resultMessage model
+
+            HelpMessage helpMessage ->
+                updateHelp helpMessage model
 
             _ ->
                 ( model, Cmd.none )

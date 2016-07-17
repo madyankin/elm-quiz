@@ -14,7 +14,7 @@ update message model =
             ( hideHint model, Cmd.none )
 
         EnableHints ->
-            ( enableHints, Cmd.none )
+            ( enableHints model, Cmd.none )
 
         DisableHints ->
-            ( disableHints, Cmd.none )
+            ( disableHints model, Cmd.none )

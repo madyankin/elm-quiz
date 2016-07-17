@@ -1,5 +1,6 @@
 module App.Update.Home exposing (..)
 
+import Utils.Commands exposing (sendMessage)
 import App.Model exposing (..)
 import App.Messages exposing (..)
 import App.Routing exposing (Route(..), navigateTo)
@@ -14,3 +15,6 @@ updateHome message model =
 
         HomeMessages.OpenResultsList ->
             ( model, navigateTo ResultsList )
+
+        HomeMessages.HelpMessage message ->
+            ( model, sendMessage (HelpMessage message) )

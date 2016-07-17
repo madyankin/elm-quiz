@@ -7,6 +7,8 @@ import App.Messages exposing (..)
 import App.Model exposing (..)
 import Features.Quiz.Messages as QuizMessages
 import Features.Result.Messages as ResultMessages
+import Features.Help.Messages as HelpMessages
+import Features.Help.Model exposing (HelpHint(..))
 import Features.ResultsList.Model exposing (resultById)
 import Features.ResultsList.Model exposing (resultById)
 
@@ -24,6 +26,11 @@ update result model =
 
         command =
             case route of
+                Home ->
+                    sendMessage
+                        <| HelpMessage
+                        <| HelpMessages.ShowHint HomeMenuHint
+
                 Quiz ->
                     sendMessage (QuizMessage QuizMessages.Start)
 

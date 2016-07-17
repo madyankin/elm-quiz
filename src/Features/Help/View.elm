@@ -9,32 +9,45 @@ import Features.Help.Model exposing (HelpHint(..), Model, hint)
 import Features.Help.Styles as Styles exposing (namespacedClass)
 
 
-currentHint : Maybe HelpHint -> Html Message
-currentHint current =
-    div [ namespacedClass Styles.Hint [] ]
-        [ current
-            |> Maybe.map hint
-            |> Maybe.withDefault ""
-            |> text
-        ]
-
-
 nextHintButton : Maybe HelpHint -> Html Message
 nextHintButton nextHint =
     let
         btn =
             \next ->
-                button [ namespacedClass Styles.Next [], onClick (ShowHint next) ] []
+                button
+                    [ namespacedClass Styles.Next []
+                    , onClick (ShowHint next)
+                    ]
+                    [ text "Далее" ]
     in
         nextHint
             |> Maybe.map btn
             |> Maybe.withDefault (text "")
 
 
-view : Model -> Maybe HelpHint -> Html Message
-view model nextHint =
+closeButton : Html Message
+closeButton =
+    button [ namespacedClass Styles.Hide [], onClick HideHint ] [ text "X" ]
+
+
+hintContainer : HelpHint -> Maybe HelpHint -> Html Message
+hintContainer currentHint nextHint =
     div [ namespacedClass Styles.Container [] ]
-        [ currentHint model.currentHint
+        [ div [ namespacedClass Styles.Hint [] ] [ text (hint currentHint) ]
         , nextHintButton nextHint
-        , button [ namespacedClass Styles.Hide [], onClick HideHint ] [ text "X" ]
+        , closeButton
         ]
+
+
+view : Model -> HelpHint -> Maybe HelpHint -> Html Message
+view model currentHint nextHint =
+    let
+        renderHint hint =
+            if hint == currentHint then
+                hintContainer currentHint nextHint
+            else
+                text ""
+    in
+        model.currentHint
+            |> Maybe.map renderHint
+            |> Maybe.withDefault (text "")

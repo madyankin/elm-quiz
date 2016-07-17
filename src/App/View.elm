@@ -9,6 +9,7 @@ import Features.Home.View as HomeView
 import Features.Quiz.View as QuizView
 import Features.Result.View as ResultView
 import Features.ResultsList.View as ResultsListView
+import Features.Help.View as HelpView
 
 
 view : Model -> Html Message
@@ -18,18 +19,22 @@ view model =
 
 page : Model -> Html Message
 page model =
-    case model.route of
-        Home ->
-            App.map HomeMessage HomeView.view
+    let
+        help =
+            HelpView.view model.help
+    in
+        case model.route of
+            Home ->
+                App.map HomeMessage (HomeView.view help)
 
-        Quiz ->
-            App.map QuizMessage (QuizView.view model.quiz)
+            Quiz ->
+                App.map QuizMessage (QuizView.view model.quiz)
 
-        Result id ->
-            App.map ResultMessage (ResultView.view model.result)
+            Result id ->
+                App.map ResultMessage (ResultView.view model.result)
 
-        ResultsList ->
-            App.map ResultsListMessage (ResultsListView.view model.resultsList)
+            ResultsList ->
+                App.map ResultsListMessage (ResultsListView.view model.resultsList)
 
-        NotFound ->
-            App.map HomeMessage HomeView.view
+            NotFound ->
+                App.map HomeMessage (HomeView.view help)
