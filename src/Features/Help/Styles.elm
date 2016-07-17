@@ -23,7 +23,12 @@ namespacedClass : CssClasses -> List String -> Attribute message
 namespacedClass class otherClasses =
     let
         defaultClasses =
-            []
+            case class of
+                Container ->
+                    [ "card-panel yellow lighten-4" ]
+
+                _ ->
+                    []
     in
         append defaultClasses otherClasses
             |> CssHelpers.namespacedClass namespace class
@@ -32,4 +37,18 @@ namespacedClass class otherClasses =
 css : List Snippet
 css =
     Css.Namespace.namespace namespace
-        []
+        [ (.) Container
+            [ position absolute
+            , width (px 350)
+            , textAlign left
+            ]
+        , (.) Hint
+            [ marginBottom (px 10)
+            ]
+        , (.) Hide
+            [ position absolute
+            , top (px 10)
+            , right (px 15)
+            , color (hex "000")
+            ]
+        ]

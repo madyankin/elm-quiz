@@ -5,7 +5,7 @@ import Html.Attributes exposing (..)
 import Utils.HtmlHelpers exposing (void)
 import Utils.Events exposing (onClick)
 import Features.Help.Messages exposing (..)
-import Features.Help.Model exposing (HelpHint(..), Model, hint)
+import Features.Help.Model exposing (HelpHint(..), Model, Position, hint)
 import Features.Help.Styles as Styles exposing (namespacedClass)
 
 
@@ -14,8 +14,9 @@ nextHintButton nextHint =
     let
         btn =
             \next ->
-                button
-                    [ namespacedClass Styles.Next []
+                a
+                    [ void
+                    , namespacedClass Styles.Next []
                     , onClick (ShowHint next)
                     ]
                     [ text "Далее" ]
@@ -27,24 +28,32 @@ nextHintButton nextHint =
 
 closeButton : Html Message
 closeButton =
-    button [ namespacedClass Styles.Hide [], onClick HideHint ] [ text "X" ]
+    a [ void, namespacedClass Styles.Hide [], onClick HideHint ]
+        [ text "✕" ]
 
 
-hintContainer : HelpHint -> Maybe HelpHint -> Html Message
-hintContainer currentHint nextHint =
-    div [ namespacedClass Styles.Container [] ]
-        [ div [ namespacedClass Styles.Hint [] ] [ text (hint currentHint) ]
-        , nextHintButton nextHint
-        , closeButton
-        ]
+hintContainer : HelpHint -> Maybe HelpHint -> Position -> Html Message
+hintContainer currentHint nextHint position =
+    let
+        containerStyle =
+            style
+                [ ( "top", (toString position.y) ++ "px" )
+                , ( "left", (toString position.x) ++ "px" )
+                ]
+    in
+        div [ namespacedClass Styles.Container [], containerStyle ]
+            [ div [ namespacedClass Styles.Hint [] ] [ text (hint currentHint) ]
+            , nextHintButton nextHint
+            , closeButton
+            ]
 
 
-view : Model -> HelpHint -> Maybe HelpHint -> Html Message
-view model currentHint nextHint =
+view : Model -> HelpHint -> Maybe HelpHint -> Position -> Html Message
+view model currentHint nextHint position =
     let
         renderHint hint =
             if hint == currentHint then
-                hintContainer currentHint nextHint
+                hintContainer currentHint nextHint position
             else
                 text ""
     in

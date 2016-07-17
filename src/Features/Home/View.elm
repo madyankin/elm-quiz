@@ -12,8 +12,8 @@ import Features.Help.Messages as HelpMessages
 view : Help HelpMessages.Message -> Html Message
 view originalHelp =
     let
-        help currentHint nextHint =
-            App.map HelpMessage (originalHelp currentHint nextHint)
+        help currentHint nextHint position =
+            App.map HelpMessage (originalHelp currentHint nextHint position)
     in
         div [ namespacedClass Styles.Container [] ]
             [ div [ namespacedClass Styles.Card [ "card" ] ]
@@ -27,7 +27,7 @@ view originalHelp =
                     , onClick OpenResultsList
                     ]
                     [ text "Результаты" ]
-                , help HomeMenuHint (Just QuizMenuHint)
-                , help QuizMenuHint Nothing
+                , help HomeMenuHint (Just QuizMenuHint) { x = 0, y = 170 }
+                , help QuizMenuHint Nothing { x = 0, y = 0 }
                 ]
             ]

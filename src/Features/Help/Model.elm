@@ -5,8 +5,14 @@ import List exposing (member)
 import Features.Help.Hints exposing (..)
 
 
+type alias Position =
+    { x : Int
+    , y : Int
+    }
+
+
 type alias Help message =
-    HelpHint -> Maybe HelpHint -> Html message
+    HelpHint -> Maybe HelpHint -> Position -> Html message
 
 
 type HelpHint

@@ -45,7 +45,7 @@ css =
         , (.) Button
             [ width (pct 100)
             , marginBottom (px 20)
-            , lastChild
+            , lastOfType
                 [ marginBottom zero
                 ]
             ]
