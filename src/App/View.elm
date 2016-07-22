@@ -28,7 +28,7 @@ page model =
                 App.map HomeMessage (HomeView.view help)
 
             Quiz ->
-                App.map QuizMessage (QuizView.view model.quiz)
+                App.map QuizMessage (QuizView.view model.quiz help)
 
             Result id ->
                 App.map ResultMessage (ResultView.view model.result)

@@ -41,6 +41,8 @@ css =
             [ position absolute
             , width (px 350)
             , textAlign left
+            , color (hex "000")
+            , lineHeight (px 21)
             ]
         , (.) Hint
             [ marginBottom (px 10)
@@ -49,6 +51,7 @@ css =
             [ position absolute
             , top (px 10)
             , right (px 15)
+            , padding zero
             , color (hex "000")
             ]
         ]

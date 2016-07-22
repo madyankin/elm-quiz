@@ -2,6 +2,7 @@ module Types exposing (..)
 
 import Date exposing (Date)
 import Array exposing (Array)
+import Html exposing (Html)
 
 
 type alias CardId =
@@ -39,5 +40,25 @@ type alias Answer =
 type alias Result =
     { answers : Array Answer
     , elapsedTime : Int
-    , date: Date
+    , date : Date
     }
+
+
+type alias Position =
+    { x : Int
+    , y : Int
+    }
+
+
+type HelpHint
+    = HomeMenuHint
+    | QuizMenuHint
+    | QuizStatusHint
+    | QuizCardHint
+    | ResultMessageHint
+    | ResultMenuHint
+    | ResultTableHint
+
+
+type alias Help message =
+    HelpHint -> Maybe HelpHint -> Position -> Html message

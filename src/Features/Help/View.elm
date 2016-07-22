@@ -4,8 +4,9 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Utils.HtmlHelpers exposing (void)
 import Utils.Events exposing (onClick)
+import Types exposing (HelpHint(..), Position)
 import Features.Help.Messages exposing (..)
-import Features.Help.Model exposing (HelpHint(..), Model, Position, hint)
+import Features.Help.Model exposing (Model, hint)
 import Features.Help.Styles as Styles exposing (namespacedClass)
 
 
@@ -39,6 +40,7 @@ hintContainer currentHint nextHint position =
             style
                 [ ( "top", (toString position.y) ++ "px" )
                 , ( "left", (toString position.x) ++ "px" )
+                , ( "z-index", "10000" )
                 ]
     in
         div [ namespacedClass Styles.Container [], containerStyle ]

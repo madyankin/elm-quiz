@@ -1,21 +1,25 @@
 module App.Update.Routing exposing (..)
 
 import Utils.Commands exposing (..)
-import Types
+import Types exposing (HelpHint(..))
 import App.Routing exposing (..)
 import App.Messages exposing (..)
 import App.Model exposing (..)
 import Features.Quiz.Messages as QuizMessages
 import Features.Result.Messages as ResultMessages
 import Features.Help.Messages as HelpMessages
-import Features.Help.Model exposing (HelpHint(..))
 import Features.ResultsList.Model exposing (resultById)
 import Features.ResultsList.Model exposing (resultById)
 
 
 openResult : Types.Result -> Cmd Message
 openResult result =
-    sendMessage <| ResultMessage (ResultMessages.Open result)
+    sendMessage (ResultMessage (ResultMessages.Open result))
+
+
+openHint : HelpHint -> Cmd Message
+openHint hint =
+    sendMessage (HelpMessage (HelpMessages.ShowHint hint))
 
 
 update : Result String Route -> Model -> ( Model, Cmd Message )
@@ -27,12 +31,13 @@ update result model =
         command =
             case route of
                 Home ->
-                    sendMessage
-                        <| HelpMessage
-                        <| HelpMessages.ShowHint HomeMenuHint
+                    openHint HomeMenuHint
 
                 Quiz ->
-                    sendMessage (QuizMessage QuizMessages.Start)
+                    Cmd.batch
+                        [ sendMessage (QuizMessage QuizMessages.Start)
+                        , openHint QuizMenuHint
+                        ]
 
                 Result id ->
                     resultById id model.resultsList

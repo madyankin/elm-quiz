@@ -10,6 +10,8 @@ import Config
 import Features.Quiz.Messages exposing (..)
 import Features.Quiz.Model exposing (..)
 import Features.Quiz.Styles as Styles exposing (namespacedClass)
+import Types exposing (HelpHint(..), Help)
+import Features.Help.Messages as HelpMessages
 import Components.Icon.Main as Icon
 import Components.Header.Main as Header
 import Components.Card.Main as Card
@@ -61,12 +63,13 @@ containerStyle currentCard cardsCount =
             ]
 
 
-leftMenu : List (Html Message)
-leftMenu =
+leftMenu : Html Message -> List (Html Message)
+leftMenu help =
     [ a [ void, class "black-text", onClick Cancel ]
         [ Icon.view "menu" ]
     , a [ void, class "black-text material-icons", onClick Start ]
         [ Icon.view "replay" ]
+    , help
     ]
 
 
@@ -105,9 +108,12 @@ renderCard model selectedAnswer index card =
             |> App.map (cardMessageToQuizMessage model)
 
 
-view : Model -> Html Message
-view model =
+view : Model -> Help HelpMessages.Message -> Html Message
+view model originalHelp =
     let
+        help currentHint nextHint position =
+            App.map HelpMessage (originalHelp currentHint nextHint position)
+
         card =
             renderCard model (selectedAnswer model)
 
@@ -115,7 +121,9 @@ view model =
             List.indexedMap card (getCards model)
     in
         div [ namespacedClass Styles.Container [] ]
-            [ Header.view leftMenu (rightMenu model)
+            [ Header.view
+                (leftMenu <| help QuizMenuHint Nothing { x = 20, y = 40 })
+                (rightMenu model)
             , div
                 [ namespacedClass Styles.Cards []
                 , containerStyle model.activeCard Config.cardsPerQuiz

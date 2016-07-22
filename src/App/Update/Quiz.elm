@@ -31,6 +31,9 @@ updateQuiz message model =
                         , navigateTo <| Result (nextId model.resultsList)
                         ]
 
+                QuizMessages.HelpMessage message ->
+                    sendMessage (HelpMessage message)
+
                 _ ->
                     taggedCommand
     in

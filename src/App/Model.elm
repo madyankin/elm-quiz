@@ -1,10 +1,11 @@
 module App.Model exposing (..)
 
+import Types exposing (HelpHint(..))
 import App.Routing exposing (Route(..), routeFromResult, navigateTo)
 import Features.Quiz.Model as Quiz
 import Features.Result.Model as Result
 import Features.ResultsList.Model as ResultsList
-import Features.Help.Model as Help exposing (HelpHint(..))
+import Features.Help.Model as Help
 
 
 type alias Model =

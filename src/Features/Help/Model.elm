@@ -1,28 +1,8 @@
 module Features.Help.Model exposing (..)
 
-import Html exposing (Html)
 import List exposing (member)
+import Types exposing (Position, Help, HelpHint(..))
 import Features.Help.Hints exposing (..)
-
-
-type alias Position =
-    { x : Int
-    , y : Int
-    }
-
-
-type alias Help message =
-    HelpHint -> Maybe HelpHint -> Position -> Html message
-
-
-type HelpHint
-    = HomeMenuHint
-    | QuizMenuHint
-    | QuizStatusHint
-    | QuizCardHint
-    | ResultMessageHint
-    | ResultMenuHint
-    | ResultTableHint
 
 
 type alias Model =
