@@ -28,7 +28,7 @@ css =
         [ (.) Container
             [ position absolute
             , width (vw 100)
-            , height (vw 100)
+            , height (vh 100)
             ]
         , (.) Card
             [ position absolute
