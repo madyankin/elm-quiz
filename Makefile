@@ -22,7 +22,7 @@ $(APP):
 styles:
 	$$(npm bin)/elm-css $(STYLES_MAIN)
 	cat $(CSS_GLOBAL) $(CSS) > $(CSS).tmp
-	$$(npm bin)/cssnano $(CSS).tmp > $(CSS_MIN)
+	$$(npm bin)/postcss --use cssnano --use autoprefixer --output $(CSS_MIN) $(CSS).tmp
 	rm $(CSS).tmp
 
 clean:
