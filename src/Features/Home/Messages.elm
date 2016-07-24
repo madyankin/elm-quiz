@@ -1,9 +1,9 @@
 module Features.Home.Messages exposing (..)
 
-import Features.Help.Messages as HelpMessages
+import Types
 
 
 type Message
     = OpenQuiz
     | OpenResultsList
-    | HelpMessage HelpMessages.Message
+    | HelpMessage Types.HelpMessage

@@ -5,11 +5,13 @@ import Html exposing (..)
 import App.Messages exposing (..)
 import App.Model exposing (..)
 import App.Routing exposing (..)
+import App.Help
 import Features.Home.View as HomeView
+import Features.Home.Messages as HomeMessages
 import Features.Quiz.View as QuizView
+import Features.Quiz.Messages as QuizMessages
 import Features.Result.View as ResultView
 import Features.ResultsList.View as ResultsListView
-import Features.Help.View as HelpView
 
 
 view : Model -> Html Message
@@ -21,20 +23,30 @@ page : Model -> Html Message
 page model =
     let
         help =
-            HelpView.view model.help
+            App.Help.help model.help
     in
         case model.route of
             Home ->
-                App.map HomeMessage (HomeView.view help)
+                help HomeMessages.HelpMessage
+                    |> HomeView.view
+                    |> App.map HomeMessage
 
             Quiz ->
-                App.map QuizMessage (QuizView.view model.quiz help)
+                help QuizMessages.HelpMessage
+                    |> QuizView.view model.quiz
+                    |> App.map QuizMessage
 
             Result id ->
-                App.map ResultMessage (ResultView.view model.result)
+                model.result
+                    |> ResultView.view
+                    |> App.map ResultMessage
 
             ResultsList ->
-                App.map ResultsListMessage (ResultsListView.view model.resultsList)
+                model.resultsList
+                    |> ResultsListView.view
+                    |> App.map ResultsListMessage
 
             NotFound ->
-                App.map HomeMessage (HomeView.view help)
+                help HomeMessages.HelpMessage
+                    |> HomeView.view
+                    |> App.map HomeMessage

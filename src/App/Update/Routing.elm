@@ -1,13 +1,12 @@
 module App.Update.Routing exposing (..)
 
 import Utils.Commands exposing (..)
-import Types exposing (HelpHint(..))
+import Types exposing (HelpHint(..), HelpMessage(..))
 import App.Routing exposing (..)
 import App.Messages exposing (..)
 import App.Model exposing (..)
 import Features.Quiz.Messages as QuizMessages
 import Features.Result.Messages as ResultMessages
-import Features.Help.Messages as HelpMessages
 import Features.ResultsList.Model exposing (resultById)
 import Features.ResultsList.Model exposing (resultById)
 
@@ -19,7 +18,7 @@ openResult result =
 
 openHint : HelpHint -> Cmd Message
 openHint hint =
-    sendMessage (HelpMessage (HelpMessages.ShowHint hint))
+    sendMessage (HelpMessage (Types.ShowHint hint))
 
 
 update : Result String Route -> Model -> ( Model, Cmd Message )

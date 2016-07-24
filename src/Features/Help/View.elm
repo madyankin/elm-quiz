@@ -4,13 +4,12 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Utils.HtmlHelpers exposing (void)
 import Utils.Events exposing (onClick)
-import Types exposing (HelpHint(..), Position)
-import Features.Help.Messages exposing (..)
+import Types exposing (HelpHint(..), Position, HelpMessage(..))
 import Features.Help.Model exposing (Model, hint)
 import Features.Help.Styles as Styles exposing (namespacedClass)
 
 
-nextHintButton : Maybe HelpHint -> Html Message
+nextHintButton : Maybe HelpHint -> Html HelpMessage
 nextHintButton nextHint =
     let
         btn =
@@ -27,13 +26,13 @@ nextHintButton nextHint =
             |> Maybe.withDefault (text "")
 
 
-closeButton : Html Message
+closeButton : Html HelpMessage
 closeButton =
     a [ void, namespacedClass Styles.Hide [], onClick HideHint ]
         [ text "✕" ]
 
 
-hintContainer : HelpHint -> Maybe HelpHint -> Position -> Html Message
+hintContainer : HelpHint -> Maybe HelpHint -> Position -> Html HelpMessage
 hintContainer currentHint nextHint position =
     let
         containerStyle =
@@ -50,7 +49,7 @@ hintContainer currentHint nextHint position =
             ]
 
 
-view : Model -> HelpHint -> Maybe HelpHint -> Position -> Html Message
+view : Model -> HelpHint -> Maybe HelpHint -> Position -> Html HelpMessage
 view model currentHint nextHint position =
     let
         renderHint hint =

@@ -1,12 +1,12 @@
 module App.Update.Help exposing (..)
 
+import Types exposing (HelpMessage(..))
 import App.Model exposing (..)
 import App.Messages exposing (..)
 import Features.Help.Update as Help
-import Features.Help.Messages as HelpMessages
 
 
-updateHelp : HelpMessages.Message -> Model -> ( Model, Cmd Message )
+updateHelp : HelpMessage -> Model -> ( Model, Cmd Message )
 updateHelp message model =
     let
         ( help, command ) =

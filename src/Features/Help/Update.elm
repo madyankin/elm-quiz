@@ -1,10 +1,10 @@
 module Features.Help.Update exposing (..)
 
-import Features.Help.Messages exposing (..)
+import Types exposing (HelpMessage(..))
 import Features.Help.Model exposing (..)
 
 
-update : Message -> Model -> ( Model, Cmd Message )
+update : HelpMessage -> Model -> ( Model, Cmd HelpMessage )
 update message model =
     case message of
         ShowHint hint ->

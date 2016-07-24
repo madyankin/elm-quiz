@@ -62,3 +62,10 @@ type HelpHint
 
 type alias Help message =
     HelpHint -> Maybe HelpHint -> Position -> Html message
+
+
+type HelpMessage
+    = ShowHint HelpHint
+    | HideHint
+    | EnableHints
+    | DisableHints

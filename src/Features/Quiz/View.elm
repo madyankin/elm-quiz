@@ -11,7 +11,6 @@ import Features.Quiz.Messages exposing (..)
 import Features.Quiz.Model exposing (..)
 import Features.Quiz.Styles as Styles exposing (namespacedClass)
 import Types exposing (HelpHint(..), Help)
-import Features.Help.Messages as HelpMessages
 import Components.Icon.Main as Icon
 import Components.Header.Main as Header
 import Components.Card.Main as Card
@@ -108,12 +107,9 @@ renderCard model selectedAnswer index card =
             |> App.map (cardMessageToQuizMessage model)
 
 
-view : Model -> Help HelpMessages.Message -> Html Message
-view model originalHelp =
+view : Model -> Help Message -> Html Message
+view model help =
     let
-        help currentHint nextHint position =
-            App.map HelpMessage (originalHelp currentHint nextHint position)
-
         card =
             renderCard model (selectedAnswer model)
 
@@ -121,8 +117,7 @@ view model originalHelp =
             List.indexedMap card (getCards model)
     in
         div [ namespacedClass Styles.Container [] ]
-            [ Header.view
-                (leftMenu <| help QuizMenuHint Nothing { x = 20, y = 40 })
+            [ Header.view (leftMenu <| help QuizMenuHint Nothing { x = 20, y = 40 })
                 (rightMenu model)
             , div
                 [ namespacedClass Styles.Cards []
