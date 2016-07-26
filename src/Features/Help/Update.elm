@@ -18,3 +18,4 @@ update message model =
 
         DisableHints ->
             ( disableHints model, Cmd.none )
+

@@ -72,12 +72,13 @@ leftMenu help =
     ]
 
 
-rightMenu : Model -> List (Html Message)
-rightMenu model =
+rightMenu : Model -> Html Message -> List (Html Message)
+rightMenu model help =
     [ a [ void, class "black-text" ]
         [ currentCardNumber model.activeCard Config.cardsPerQuiz ]
     , a [ void, class "black-text" ]
         [ Timer.view True model.elapsedTime ]
+    , help
     ]
 
 
@@ -115,10 +116,16 @@ view model help =
 
         cards =
             List.indexedMap card (getCards model)
+
+        menuHint =
+            help QuizMenuHint (Just QuizStatusHint) [ ( Left, 20 ), ( Top, 40 ) ]
+
+        statusHint =
+            help QuizStatusHint Nothing [ ( Right, 20 ), ( Top, 40 ) ]
     in
         div [ namespacedClass Styles.Container [] ]
-            [ Header.view (leftMenu <| help QuizMenuHint Nothing { x = 20, y = 40 })
-                (rightMenu model)
+            [ Header.view (leftMenu menuHint)
+                (rightMenu model statusHint)
             , div
                 [ namespacedClass Styles.Cards []
                 , containerStyle model.activeCard Config.cardsPerQuiz

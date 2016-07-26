@@ -45,13 +45,27 @@ css =
             , lineHeight (px 21)
             ]
         , (.) Hint
-            [ marginBottom (px 10)
+            [ paddingRight (px 10)
             ]
         , (.) Hide
             [ position absolute
             , top (px 10)
             , right (px 15)
             , padding zero
-            , color (hex "000")
+            , color (hex "000") |> important
+            , backgroundColor transparent |> important
+            , hover
+                [ color (hex "546e7a") |> important
+                ]
+            ]
+        , (.) Next
+            [ display inlineBlock |> important
+            , marginTop (px 10)
+            , padding zero |> important
+            , backgroundColor transparent |> important
+            , color (hex "039be5") |> important
+            , hover
+                [ color (hex "64b5f6") |> important
+                ]
             ]
         ]

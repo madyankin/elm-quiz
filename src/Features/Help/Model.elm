@@ -55,5 +55,8 @@ hint helpHint =
         QuizMenuHint ->
             quizMenu
 
+        QuizStatusHint ->
+            quizStatus
+
         _ ->
             ""

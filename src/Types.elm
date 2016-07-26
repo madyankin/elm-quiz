@@ -44,10 +44,15 @@ type alias Result =
     }
 
 
+type PositionSide
+    = Top
+    | Right
+    | Bottom
+    | Left
+
+
 type alias Position =
-    { x : Int
-    , y : Int
-    }
+    List ( PositionSide, Int )
 
 
 type HelpHint

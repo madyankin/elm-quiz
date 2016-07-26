@@ -2,11 +2,20 @@ module Config exposing (..)
 
 
 cardsPerQuiz : Int
-cardsPerQuiz = 10
+cardsPerQuiz =
+    10
+
 
 successScore : Float
-successScore = 0.8
+successScore =
+    0.8
+
 
 timeLimit : Int
 timeLimit =
-  30 * 60
+    timeLimitInMinutes * 60
+
+
+timeLimitInMinutes : Int
+timeLimitInMinutes =
+    30

@@ -4,7 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Utils.HtmlHelpers exposing (void)
 import Utils.Events exposing (onClick)
-import Types exposing (HelpHint(..), Position, HelpMessage(..))
+import Types exposing (HelpHint(..), PositionSide(..), Position, HelpMessage(..))
 import Features.Help.Model exposing (Model, hint)
 import Features.Help.Styles as Styles exposing (namespacedClass)
 
@@ -32,17 +32,36 @@ closeButton =
         [ text "✕" ]
 
 
+styleFromPosition : Position -> List ( String, String )
+styleFromPosition position =
+    let
+        mapPair ( side, value ) =
+            ( (mapSide side), (toString value) ++ "px" )
+
+        mapSide side =
+            case side of
+                Top ->
+                    "top"
+
+                Right ->
+                    "right"
+
+                Bottom ->
+                    "bottom"
+
+                Left ->
+                    "left"
+    in
+        List.map mapPair position
+
+
 hintContainer : HelpHint -> Maybe HelpHint -> Position -> Html HelpMessage
 hintContainer currentHint nextHint position =
     let
         containerStyle =
-            style
-                [ ( "top", (toString position.y) ++ "px" )
-                , ( "left", (toString position.x) ++ "px" )
-                , ( "z-index", "10000" )
-                ]
+            ( "z-index", "10000" ) :: styleFromPosition position
     in
-        div [ namespacedClass Styles.Container [], containerStyle ]
+        div [ namespacedClass Styles.Container [], style containerStyle ]
             [ div [ namespacedClass Styles.Hint [] ] [ text (hint currentHint) ]
             , nextHintButton nextHint
             , closeButton
