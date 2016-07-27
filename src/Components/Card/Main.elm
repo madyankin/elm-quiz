@@ -88,7 +88,7 @@ content { number, card, kind, selectedAnswer } =
                         [ Icon.view "live_help" ]
 
         title =
-            [ text ("Вопрос №" ++ (toString number)), hint ]
+            [ text ("Вопрос №" ++ (toString number)) ]
 
         answers =
             AnswerList.view
@@ -149,8 +149,8 @@ view model =
             div [ namespacedClass Styles.ReadOnlyCard [] ]
                 [ image model.card
                 , content model
-                , div [ namespacedClass Styles.StaticHint [] ]
-                    [ text model.card.hint ]
+                  -- , div [ namespacedClass Styles.StaticHint [] ]
+                  --     [ text model.card.hint ]
                 ]
 
         _ ->
@@ -159,6 +159,6 @@ view model =
                     [ image model.card
                     , content model
                     , buttons model.kind
-                    , hint model
+                      -- , hint model
                     ]
                 ]

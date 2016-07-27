@@ -12,6 +12,7 @@ type CssClasses
     = Container
     | HeaderMenu
     | Cards
+    | CardHint
 
 
 namespace : String
@@ -33,6 +34,11 @@ featureCss =
         , (.) Cards
             [ displayFlex
             , height (vh 100)
+            ]
+        , (.) CardHint
+            [ position absolute
+            , top (pct 50)
+            , left (pct 50)
             ]
         ]
 

@@ -121,11 +121,15 @@ view model help =
             help QuizMenuHint (Just QuizStatusHint) [ ( Left, 20 ), ( Top, 40 ) ]
 
         statusHint =
-            help QuizStatusHint Nothing [ ( Right, 20 ), ( Top, 40 ) ]
+            help QuizStatusHint (Just QuizCardHint) [ ( Right, 20 ), ( Top, 40 ) ]
+
+        cardHint =
+            div [ namespacedClass Styles.CardHint [] ]
+                [ help QuizCardHint Nothing [ ( Left, -40 ), ( Top, -230 ) ] ]
     in
         div [ namespacedClass Styles.Container [] ]
-            [ Header.view (leftMenu menuHint)
-                (rightMenu model statusHint)
+            [ Header.view (leftMenu menuHint) (rightMenu model statusHint)
+            , cardHint
             , div
                 [ namespacedClass Styles.Cards []
                 , containerStyle model.activeCard Config.cardsPerQuiz
