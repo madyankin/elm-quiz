@@ -73,6 +73,11 @@ componentCss =
             , height (vh 100)
             , marginTop (px -56)
             ]
+        , (.) ReadOnlyCard
+            [ maxWidth (px 600)
+            , margin3 zero auto (px 20)
+            , paddingBottom (px 20)
+            ]
         , (.) Card
             [ position absolute
             , top (pct 50)
