@@ -43,6 +43,9 @@ update result model =
                         |> Maybe.map openResult
                         |> Maybe.withDefault (navigateTo ResultsList)
 
+                ResultsList ->
+                    openHint ResultTableHint
+
                 _ ->
                     Cmd.none
     in

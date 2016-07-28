@@ -1,5 +1,6 @@
 module App.Update.ResultsList exposing (..)
 
+import Utils.Commands exposing (sendMessage)
 import App.Model exposing (..)
 import App.Messages exposing (..)
 import App.Routing exposing (Route(..), navigateTo)
@@ -33,6 +34,9 @@ updateResultsList message model =
                         resultById id resultsList
                             |> Maybe.map successCommand
                             |> Maybe.withDefault taggedCommand
+
+                ResultsListMessages.HelpMessage message ->
+                    sendMessage (HelpMessage message)
 
                 _ ->
                     taggedCommand

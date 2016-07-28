@@ -43,7 +43,10 @@ namespacedClass class otherClasses =
 featureCss : List Snippet
 featureCss =
     Css.Namespace.namespace namespace
-        [ (.) Table
+        [ (.) Results
+            [ position relative
+            ]
+        , (.) Table
             [ margin2 (px 40) auto
             , backgroundColor (hex "fff")
             ]

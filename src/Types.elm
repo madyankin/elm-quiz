@@ -60,8 +60,6 @@ type HelpHint
     | QuizMenuHint
     | QuizStatusHint
     | QuizCardHint
-    | ResultMessageHint
-    | ResultMenuHint
     | ResultTableHint
 
 

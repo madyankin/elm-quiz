@@ -12,6 +12,7 @@ import Features.Quiz.View as QuizView
 import Features.Quiz.Messages as QuizMessages
 import Features.Result.View as ResultView
 import Features.ResultsList.View as ResultsListView
+import Features.ResultsList.Messages as ResultsListMessages
 
 
 view : Model -> Html Message
@@ -42,8 +43,8 @@ page model =
                     |> App.map ResultMessage
 
             ResultsList ->
-                model.resultsList
-                    |> ResultsListView.view
+                help ResultsListMessages.HelpMessage
+                    |> ResultsListView.view model.resultsList
                     |> App.map ResultsListMessage
 
             NotFound ->

@@ -84,10 +84,12 @@ resultsTable model =
         ]
 
 
-view : Model -> Html Message
-view model =
+view : Model -> Help Message -> Html Message
+view model help =
     div [ namespacedClass Styles.Container [] ]
         [ Header.view leftMenu (rightMenu model)
         , div [ namespacedClass Styles.Results [] ]
-            [ resultsTable model ]
+            [ help ResultTableHint Nothing [ ( Top, 10 ), ( Left, -20 ) ]
+            , resultsTable model
+            ]
         ]

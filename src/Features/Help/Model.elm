@@ -61,5 +61,5 @@ hint helpHint =
         QuizCardHint ->
             quizCard
 
-        _ ->
-            ""
+        ResultTableHint ->
+            resultTable

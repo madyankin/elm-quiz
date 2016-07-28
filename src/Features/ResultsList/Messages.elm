@@ -9,3 +9,4 @@ type Message
     | AddResult Types.Result
     | ShowResult Types.ResultId
     | SetResults Model
+    | HelpMessage Types.HelpMessage
