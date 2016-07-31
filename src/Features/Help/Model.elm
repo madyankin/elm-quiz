@@ -1,7 +1,7 @@
 module Features.Help.Model exposing (..)
 
 import List exposing (member)
-import Types exposing (Position, Help, HelpHint(..))
+import Types exposing (Position, Help, HelpHint(..), HelpModel)
 import Features.Help.Hints exposing (..)
 
 

@@ -67,8 +67,16 @@ type alias Help message =
     HelpHint -> Maybe HelpHint -> Position -> Html message
 
 
+type alias HelpModel =
+    { show : Bool
+    , currentHint : Maybe HelpHint
+    , shownHints : List HelpHint
+    }
+
+
 type HelpMessage
     = ShowHint HelpHint
     | HideHint
     | EnableHints
     | DisableHints
+    | SetHelp HelpModel

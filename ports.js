@@ -4,10 +4,11 @@
   var app = Elm.Main.fullscreen();
 
   var RESULTS_KEY = 'results';
+  var HELP_KEY    = 'help';
 
 
-  function results() {
-    var data = localStorage.getItem(RESULTS_KEY);
+  function get(key) {
+    var data = localStorage.getItem(key);
 
     try {
       return JSON.parse(data) || null;
@@ -16,14 +17,20 @@
     }
   }
 
-  function setResults(data) {
-    var value = JSON.stringify(data)
-    localStorage.setItem(RESULTS_KEY, value);
+
+  function set(key) {
+    return function(data) {
+      var value = JSON.stringify(data)
+      localStorage.setItem(key, value);
+    }
   }
 
+
   setTimeout(function() {
-    app.ports.results.send(results());
+    app.ports.results.send(get(RESULTS_KEY));
+    app.ports.help.send(get(HELP_KEY));
   }, 0);
 
-  app.ports.setResults.subscribe(setResults);
+  app.ports.setResults.subscribe(set(RESULTS_KEY));
+  app.ports.setHelp.subscribe(set(HELP_KEY));
 }());
