@@ -11,8 +11,8 @@
     "chokidar-cli": "^1.2.0",
     "cssnano": "^3.7.3",
     "cssnano-cli": "^1.0.4",
-    "electron-packager": "^7.3.0",
-    "electron-prebuilt": "^1.2.8",
+    "electron-packager": "^7.4.0",
+    "electron-prebuilt": "^1.3.1",
     "elm-css": "github:rtfeldman/elm-css"
   }
 }
