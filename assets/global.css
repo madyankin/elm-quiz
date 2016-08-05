@@ -3,7 +3,6 @@ body {
 }
 
 
-/* elm-css hacks start */
 
 .HeaderMenu {
   z-index: 100;
@@ -33,11 +32,17 @@ body {
   transition: transform 200ms cubic-bezier(0.86, 0, 0.07, 1);
 }
 
-/* elm-css hacks end */
+.ResultsListRow:hover {
+  cursor: pointer;
+}
+
+.ResultsListRow:hover .ResultsListSuccess,
+.ResultsListRow:hover .ResultsListFailure {
+  color: #000 !important;
+}
 
 
-
-  .Result {}
+.Result {}
 
     .Result-container {
       box-sizing: border-box;

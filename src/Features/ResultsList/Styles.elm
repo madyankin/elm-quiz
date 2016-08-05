@@ -12,6 +12,7 @@ type CssClasses
     = Container
     | Results
     | Table
+    | Row
     | Cell
     | Success
     | Failure
@@ -49,6 +50,11 @@ featureCss =
         , (.) Table
             [ margin2 (px 40) auto
             , backgroundColor (hex "fff")
+            ]
+        , (.) Row
+            [ hover
+                [ backgroundColor (hex "4db6ac") |> important
+                ]
             ]
         , (.) Cell
             [ padding2 (px 10) (px 20)

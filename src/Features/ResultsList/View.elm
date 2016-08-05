@@ -51,7 +51,7 @@ resultItem id model =
             else
                 span [ namespacedClass Styles.Failure [] ] [ text "Не пройден" ]
     in
-        tr [ onClick (ShowResult id) ]
+        tr [ onClick (ShowResult id), namespacedClass Styles.Row [] ]
             [ td [ namespacedClass Styles.Cell [] ]
                 [ date model.date ]
             , td [ namespacedClass Styles.Cell [] ]
