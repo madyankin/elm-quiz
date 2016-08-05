@@ -35,7 +35,7 @@ css =
             , top (pct 50)
             , left (pct 50)
             , padding (px 40)
-            , width (px 300)
+            , width (px 350)
             , textAlign center
             , transforms
                 [ translateX (pct -50)

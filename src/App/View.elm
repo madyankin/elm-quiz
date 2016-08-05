@@ -29,7 +29,7 @@ page model =
         case model.route of
             Home ->
                 help HomeMessages.HelpMessage
-                    |> HomeView.view
+                    |> HomeView.view model.help
                     |> App.map HomeMessage
 
             Quiz ->
@@ -49,5 +49,5 @@ page model =
 
             NotFound ->
                 help HomeMessages.HelpMessage
-                    |> HomeView.view
+                    |> HomeView.view model.help
                     |> App.map HomeMessage

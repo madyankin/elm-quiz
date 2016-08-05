@@ -1,5 +1,6 @@
 module Features.Help.Model exposing (..)
 
+import Set
 import List exposing (member)
 import Types exposing (Position, Help, HelpHint(..), HelpModel)
 import Features.Help.Hints exposing (..)
@@ -14,7 +15,7 @@ type alias Model =
 
 init : Maybe HelpHint -> Model
 init hint =
-    { show = False
+    { show = True
     , currentHint = hint
     , shownHints = []
     }
@@ -57,14 +58,35 @@ hideHint model =
             model
 
 
-disableHints : Model -> Model
-disableHints model =
-    { model | show = False }
+disableHelp : Model
+disableHelp =
+    { show = False, currentHint = Nothing, shownHints = [] }
 
 
-enableHints : Model -> Model
-enableHints model =
-    { model | show = True }
+enableHelp : Model
+enableHelp =
+    { show = True, currentHint = Just HomeMenuHint, shownHints = [] }
+
+
+allHintsShown : Model -> Bool
+allHintsShown model =
+    let
+        shownHints =
+            model.shownHints
+                |> List.map toString
+                |> Set.fromList
+
+        allHints =
+            [ HomeMenuHint
+            , QuizMenuHint
+            , QuizStatusHint
+            , QuizCardHint
+            , ResultTableHint
+            ]
+                |> List.map toString
+                |> Set.fromList
+    in
+        shownHints == allHints
 
 
 hint : HelpHint -> String

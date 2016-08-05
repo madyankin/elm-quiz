@@ -20,11 +20,11 @@ update message model =
                 HideHint ->
                     hideHint model
 
-                EnableHints ->
-                    enableHints model
+                EnableHelp ->
+                    enableHelp
 
-                DisableHints ->
-                    disableHints model
+                DisableHelp ->
+                    disableHelp
 
                 SetHelp model ->
                     model

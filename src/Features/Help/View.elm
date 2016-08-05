@@ -77,6 +77,9 @@ view model currentHint nextHint position =
             else
                 text ""
     in
-        model.currentHint
-            |> Maybe.map renderHint
-            |> Maybe.withDefault (text "")
+        if model.show then
+            model.currentHint
+                |> Maybe.map renderHint
+                |> Maybe.withDefault (text "")
+        else
+            text ""

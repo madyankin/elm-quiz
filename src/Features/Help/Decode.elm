@@ -55,4 +55,4 @@ fromJson json =
             model
 
         Err message ->
-            init Nothing
+            init (Just HomeMenuHint)

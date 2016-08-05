@@ -78,6 +78,6 @@ type HelpMessage
     = ShowHintSet (List HelpHint)
     | ShowHint HelpHint
     | HideHint
-    | EnableHints
-    | DisableHints
+    | EnableHelp
+    | DisableHelp
     | SetHelp HelpModel
