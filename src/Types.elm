@@ -75,7 +75,8 @@ type alias HelpModel =
 
 
 type HelpMessage
-    = ShowHint HelpHint
+    = ShowHintSet (List HelpHint)
+    | ShowHint HelpHint
     | HideHint
     | EnableHints
     | DisableHints

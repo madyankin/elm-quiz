@@ -20,6 +20,19 @@ init hint =
     }
 
 
+showHintSet : Model -> List HelpHint -> Model
+showHintSet model hints =
+    case hints of
+        [] ->
+            model
+
+        hint :: restHints ->
+            if member hint model.shownHints then
+                showHintSet model restHints
+            else
+                showHint model hint
+
+
 showHint : Model -> HelpHint -> Model
 showHint model hint =
     if member hint model.shownHints then
@@ -33,7 +46,15 @@ showHint model hint =
 
 hideHint : Model -> Model
 hideHint model =
-    { model | currentHint = Nothing }
+    case model.currentHint of
+        Just hint ->
+            { model
+                | currentHint = Nothing
+                , shownHints = hint :: model.shownHints
+            }
+
+        Nothing ->
+            model
 
 
 disableHints : Model -> Model

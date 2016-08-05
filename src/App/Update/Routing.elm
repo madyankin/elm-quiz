@@ -16,9 +16,9 @@ openResult result =
     sendMessage (ResultMessage (ResultMessages.Open result))
 
 
-openHint : HelpHint -> Cmd Message
-openHint hint =
-    sendMessage (HelpMessage (Types.ShowHint hint))
+showHintSet : List HelpHint -> Cmd Message
+showHintSet hints =
+    sendMessage (HelpMessage (Types.ShowHintSet hints))
 
 
 update : Result String Route -> Model -> ( Model, Cmd Message )
@@ -30,12 +30,12 @@ update result model =
         command =
             case route of
                 Home ->
-                    openHint HomeMenuHint
+                    showHintSet [ HomeMenuHint ]
 
                 Quiz ->
                     Cmd.batch
                         [ sendMessage (QuizMessage QuizMessages.Start)
-                        , openHint QuizMenuHint
+                        , showHintSet [ QuizMenuHint, QuizStatusHint, QuizCardHint ]
                         ]
 
                 Result id ->
@@ -44,7 +44,7 @@ update result model =
                         |> Maybe.withDefault (navigateTo ResultsList)
 
                 ResultsList ->
-                    openHint ResultTableHint
+                    showHintSet [ ResultTableHint ]
 
                 _ ->
                     Cmd.none

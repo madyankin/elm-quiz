@@ -11,6 +11,9 @@ update message model =
     let
         updatedModel =
             case message of
+                ShowHintSet hints ->
+                    showHintSet model hints
+
                 ShowHint hint ->
                     showHint model hint
 
