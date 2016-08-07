@@ -3,7 +3,7 @@ module Config exposing (..)
 
 cardsPerQuiz : Int
 cardsPerQuiz =
-    10
+    20
 
 
 successScore : Float
