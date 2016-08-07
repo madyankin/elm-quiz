@@ -1,5 +1,17 @@
 {
-    "version": "1.0.0",
+  "window": {
+    "title": "ПДД",
+    "icon": "assets/icon.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 600,
+    "position": "center",
+    "max_width": 800,
+    "max_height": 768
+  },
+  "name": "ПДД",
+  "version": "1.0.0",
     "summary": "helpful summary of your project, less than 80 characters",
     "repository": "https://github.com/user/project.git",
     "license": "BSD3",

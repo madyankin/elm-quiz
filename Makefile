@@ -1,4 +1,5 @@
 BUILD				= build
+DIST				= dist
 MAIN				= src/Main.elm
 ARTIFACTS		= elm-stuff/build-artifacts
 SOURCES			= 'src/**/*.elm'
@@ -15,6 +16,9 @@ CSS_GLOBAL	= assets/global.css
 all: build
 
 build: $(APP) styles
+	cp -r assets $(BUILD)
+	cp ports.js $(BUILD)
+	cp index.html $(BUILD)
 
 $(APP):
 	elm make $(MAIN) --output $@
@@ -26,7 +30,7 @@ styles:
 	rm $(CSS).tmp
 
 clean:
-	rm -rf $(BUILD) $(ARTIFACTS)
+	rm -rf $(BUILD) $(ARTIFACTS) $(DIST)
 
 watch:
 	$$(npm bin)/chokidar $(SOURCES) -c 'make build'
@@ -37,3 +41,7 @@ start: build
 install-packages:
 	npm install
 	elm package install
+
+dist: clean build
+	cp package.json $(BUILD)
+	$$(npm bin)/nwbuild $(BUILD) --build -o $(DIST) -v 0.12.2
