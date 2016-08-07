@@ -9,4 +9,5 @@ type Message
     | AddResult Types.Result
     | ShowResult Types.ResultId
     | SetResults Model
+    | OpenQuiz
     | HelpMessage Types.HelpMessage

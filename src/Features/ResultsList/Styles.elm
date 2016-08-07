@@ -16,6 +16,8 @@ type CssClasses
     | Cell
     | Success
     | Failure
+    | NoResults
+    | Button
 
 
 namespace : String
@@ -64,6 +66,13 @@ featureCss =
             ]
         , (.) Success
             [ color (hex "4caf50")
+            ]
+        , (.) NoResults
+            [ maxWidth (px 600)
+            , margin2 (px 40) auto
+            ]
+        , (.) Button
+            [ marginTop (px 10)
             ]
         ]
 

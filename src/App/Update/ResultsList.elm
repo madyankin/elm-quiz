@@ -20,6 +20,10 @@ updateResultsList message model =
 
         finalCommand =
             case message of
+                ResultsListMessages.OpenQuiz ->
+                    navigateTo Quiz
+
+
                 ResultsListMessages.Close ->
                     Cmd.batch [ taggedCommand, navigateTo Home ]
 

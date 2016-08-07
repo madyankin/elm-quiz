@@ -84,12 +84,37 @@ resultsTable model =
         ]
 
 
-view : Model -> Help Message -> Html Message
-view model help =
-    div [ namespacedClass Styles.Container [] ]
-        [ Header.view leftMenu (rightMenu model)
-        , div [ namespacedClass Styles.Results [] ]
-            [ help ResultTableHint Nothing [ ( Top, 10 ), ( Left, -20 ) ]
-            , resultsTable model
+noResults : Html Message
+noResults =
+    div [ namespacedClass Styles.NoResults [ "card" ] ]
+        [ div [ class "card-content" ]
+            [ div [ class "card-title" ] [ text "Результатов пока нет" ]
+            , p [] [ text "Вы еще ни разу не проходили тестирование." ]
+            , p [] [ text "Почему бы не сделать это прямо сейчас? " ]
+            , button
+                [ namespacedClass Styles.Button [ "btn" ]
+                , onClick OpenQuiz
+                ]
+                [ text "Начать тестирование" ]
             ]
         ]
+
+
+view : Model -> Help Message -> Html Message
+view model help =
+    let
+        results =
+            case toList model of
+                [] ->
+                    noResults
+
+                _ ->
+                    div [ namespacedClass Styles.Results [] ]
+                        [ help ResultTableHint Nothing [ ( Top, 10 ), ( Left, -20 ) ]
+                        , resultsTable model
+                        ]
+    in
+        div [ namespacedClass Styles.Container [] ]
+            [ Header.view leftMenu (rightMenu model)
+            , results
+            ]
