@@ -1,0 +1,172 @@
+.HomeContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.HomeCard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.HomeButton {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.HomeButton:last-of-type {
+    margin-bottom: 0;
+}
+
+.HeaderMenu {
+    position: relative;
+    height: 56px !important;
+}
+
+.AnswerListContainer {
+    margin: 20px 0 0;
+}
+
+.CardContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -56px;
+}
+
+.CardReadOnlyCard {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding-bottom: 20px;
+}
+
+.CardCard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 1px;
+    width: 500px;
+    overflow: hidden;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.CardHelpIcon {
+    margin-top: 5px;
+}
+
+.CardAction {
+    display: flex;
+}
+
+.CardButton {
+    margin: 0 !important;
+}
+
+.CardHint {
+    display: block !important;
+}
+
+.CardHintContent {
+    margin-top: 10px;
+}
+
+.CardStaticHint {
+    padding: 20px;
+    color: #959595;
+}
+
+.QuizHeaderMenu {
+    position: relative;
+}
+
+.QuizCards {
+    display: flex;
+    height: 100vh;
+}
+
+.QuizCardHint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.HeaderMenu {
+    position: relative;
+    height: 56px !important;
+}
+
+.ResultsListResults {
+    position: relative;
+}
+
+.ResultsListTable {
+    margin: 40px auto;
+    background-color: #fff;
+}
+
+.ResultsListRow:hover {
+    background-color: #4db6ac !important;
+}
+
+.ResultsListCell {
+    padding: 10px 20px;
+}
+
+.ResultsListFailure {
+    color: #f44336;
+}
+
+.ResultsListSuccess {
+    color: #4caf50;
+}
+
+.ResultsListNoResults {
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.ResultsListButton {
+    margin-top: 10px;
+}
+
+.HelpContainer {
+    position: absolute;
+    width: 350px;
+    text-align: left;
+    color: #000;
+    line-height: 21px;
+}
+
+.HelpHint {
+    padding-right: 10px;
+}
+
+.HelpHide {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 0;
+    color: #000 !important;
+    background-color: transparent !important;
+}
+
+.HelpHide:hover {
+    color: #546e7a !important;
+}
+
+.HelpNext {
+    display: inline-block !important;
+    margin-top: 10px;
+    padding: 0 !important;
+    background-color: transparent !important;
+    color: #039be5 !important;
+}
+
+.HelpNext:hover {
+    color: #64b5f6 !important;
+}
