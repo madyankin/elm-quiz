@@ -44,4 +44,4 @@ install-packages:
 
 dist: clean build
 	cp package.json $(BUILD)
-	$$(npm bin)/nwbuild $(BUILD) --build -o $(DIST) -v 0.12.2
+	$$(npm bin)/nwbuild $(BUILD) --build -o $(DIST) -v 0.12.3
